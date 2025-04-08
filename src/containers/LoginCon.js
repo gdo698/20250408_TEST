@@ -23,7 +23,7 @@ function LoginCon() {
             const result = await loginCheck(state.login.id, state.login.pwd);
             if (result === 0) {
                 login(state.login.id);
-                navigate("/list");
+                navigate("/");
             }
         } catch (e) {
             dispatch({ type: "ERROR", error: e.toString() });

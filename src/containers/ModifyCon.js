@@ -12,7 +12,7 @@ function ModifyCon() {
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
-            const result = await getOne(params.id); // 비동기 호출
+            const result = await getOne(params.id); 
             setData(result);
             setLoading(false);
         };

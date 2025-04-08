@@ -41,17 +41,16 @@ const loginCheck = async (id, pwd) => {
         }, 1000); 
     });
 };
-export const modify = (user) => {
-    data_set = data_set.map( (item) => item.id === user.id ? user : item );
-    
+const modify = (user) => {
+    data_set = data_set.map( (data) => data.id === user.id ? user : data );
     return 1;
 }
-export const getOne = ( id ) => 
-    data_set.filter( (item) => item.id === id )[0];
+const getOne = ( id ) => 
+    data_set.filter( (data) => data.id === id )[0];
 
-export const deleteOne = ( id ) => {
-    data_set =data_set.filter( (item) => item.id !== id );
+const deleteOne = ( id ) => {
+    data_set =data_set.filter( (data) => data.id !== id );
     return 1;
 }
-export { register ,  getList, loginCheck }
+export { register , getList, loginCheck, modify, getOne, deleteOne }
 

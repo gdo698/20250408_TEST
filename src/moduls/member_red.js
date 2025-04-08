@@ -8,6 +8,7 @@ const initalState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case "INITALSTATE" : return initalState;
         case "CHANGE_INPUT":
             return {
                 ...state,

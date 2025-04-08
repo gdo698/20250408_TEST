@@ -16,6 +16,14 @@ function RegCon() {
     
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        if (!state.register.id || !state.register.pwd 
+            || !state.register.name || !state.register.addr) {
+            alert("모든 항목을 입력해주세요.");
+            dispatch({type: "INITALSTATE"});
+            return; 
+        }
+
         dispatch({ type: "LOADING" });
         try {
             const result = await register(state.register); 

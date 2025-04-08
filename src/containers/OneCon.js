@@ -1,20 +1,23 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import OneCom from "../components/OneCom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { deleteOne, getOne } from "../service/member";
+import { AuthContext } from "../store/AuthContext";
 
 function OneCon () {
+    const { auth } = useContext(AuthContext); 
     const [params] = useSearchParams();
     const [data, setData] = useState({});
     const navigate = useNavigate();
-
+    
+    const isCheck = auth && auth.user === data.id;
+    
     useEffect(() => {
         const id = params.get("id");
         const result = getOne(id);
         if (result) {
           setData(result);  
         } else {
-          alert("해당 사용자를 찾을 수 없습니다.");
           navigate("/list");  
         }
       }, [params, navigate]);
@@ -35,7 +38,7 @@ function OneCon () {
     
     return (
         <div>
-            <OneCom onModify={onModify} data={data} onDelete={onDelete} />
+            <OneCom onModify={onModify} data={data} onDelete={onDelete} isCheck={isCheck} />
         </div>
     )
 }
